@@ -101,5 +101,5 @@ ALTER TABLE Student ADD CHECK (LENGTH(name) > 3);
 
 ALTER TABLE EnrolledCourses ADD CONSTRAINT fk_student FOREIGN KEY(StudentID) REFERENCES Student(RegNo);
 
- 
+DROP DATABASE postgres;
 
