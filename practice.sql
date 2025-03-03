@@ -103,3 +103,4 @@ ALTER TABLE EnrolledCourses ADD CONSTRAINT fk_student FOREIGN KEY(StudentID) REF
 
 DROP DATABASE postgres;
 
+SELECT pg_terminate_backend(14044);
