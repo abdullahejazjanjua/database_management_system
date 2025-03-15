@@ -58,3 +58,12 @@ SELECT * FROM employees ORDER BY Department ASC, Salary DESC; -- Sorting by muti
 -- ALL USE CASES
 
 SELECT Department, AVG(Salary) AS average_salary FROM employees GROUP BY Department HAVING AVG(Salary) <75000 ORDER BY AVG(Salary) DESC;
+
+-- Additional Prac
+SELECT 
+	allergies, 
+    COUNT(allergies) 
+FROM patients 
+WHERE allergies IS NOT NULL group by allergies 
+ORDER BY COUNT(allergies) DESC;
+

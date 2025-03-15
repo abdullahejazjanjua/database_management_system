@@ -111,3 +111,13 @@ INTERSECT
 -- List all the students who are never enrolled in Calculus-I course
 SELECT SID FROM students WHERE SID NOT IN (SELECT SID FROM enrollments WHERE CID = 102);
 SELECT SID FROM students EXCEPT (SELECT SID FROM enrollments WHERE CID = 102);
+
+-- Additional Practice
+SELECT 
+	MAX(num_of_visits), 
+    MIN(num_of_visits), 
+    ROUND(AVG(num_of_visits), 2)
+FROM 
+	(
+		SELECT COUNT(*) AS num_of_visits FROM admissions group by admission_date
+    );

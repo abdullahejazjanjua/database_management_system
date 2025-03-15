@@ -101,6 +101,21 @@ ALTER TABLE Student ADD CHECK (LENGTH(name) > 3);
 
 ALTER TABLE EnrolledCourses ADD CONSTRAINT fk_student FOREIGN KEY(StudentID) REFERENCES Student(RegNo);
 
-DROP DATABASE postgres;
+-- Additional prac
+SELECT patient_id, first_name FROM patients WHERE first_name LIKE 's%s' AND LENGTH(first_name) >=6;
 
-SELECT pg_terminate_backend(14044);
+SELECT 
+	patient_id, attending_doctor_id, diagnosis 
+FROM admissions
+WHERE
+	(
+      	patient_id % 2 != 0
+		AND
+      	attending_doctor_id IN (1, 5, 19)
+    )
+    OR
+    (
+    	attending_doctor_id LIKE '%2%'
+      	AND
+      	LENGTH(patient_id) = 3
+    );
