@@ -119,3 +119,14 @@ WHERE
       	AND
       	LENGTH(patient_id) = 3
     );
+
+
+SELECT * FROM patients WHERE
+(
+  first_name LIKE '__r%' AND 
+  gender = 'F' AND 
+  MONTH(birth_date) IN (5, 2, 12) AND
+  weight between 60 AND 80 AND
+  patient_id % 2 != 0 AND
+  city = 'Kingston'
+);

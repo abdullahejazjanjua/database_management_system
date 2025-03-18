@@ -114,3 +114,13 @@ SELECT
 	MAX(weight) - MIN(weight) as weight_difference 
 FROM patients 
 WHERE last_name = 'Maroni';
+
+SELECT product_name, category_name, company_name from products
+JOIN categories ON products.category_id = categories.category_id
+JOIN suppliers ON suppliers.supplier_id = products.supplier_id;
+
+SELECT MAX(num_visits) AS min_visits, MIN(num_visits) AS max_visits, ROUND(AVG(num_visits),2) AS avg_visits
+FROM (
+  SELECT count(*) as num_visits FROM admissions group by admission_date
+  
+);

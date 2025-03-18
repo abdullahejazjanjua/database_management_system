@@ -39,3 +39,5 @@ JOIN course AS cur ON pre_course.course_code = cur.course_code;
 
 SELECT course_code, COUNT(*) FROM course_student GROUP BY course_code ORDER BY COUNT(*) DESC LIMIT 5;
 
+SELECT * FROM course_student;
+SELECT * FROM pre_course;

@@ -121,3 +121,13 @@ FROM
 	(
 		SELECT COUNT(*) AS num_of_visits FROM admissions group by admission_date
     );
+
+SELECT city, company_name, contact_name, 'customers' AS relationship FROM customers 
+UNION
+SELECT city, company_name, contact_name, 'suppliers' AS relationship FROM suppliers; 
+
+SELECT patients.patient_id, first_name, last_name FROM patients
+WHERE NOT exists (
+  	SELECT * FROM admissions 
+    WHERE admissions.patient_id = patients.patient_id
+);
