@@ -6,7 +6,7 @@ CREATE TABLE employees (
     last_updated TIMESTAMP DEFAULT '2025-05-07 01:29:53.997673'
 );
 
-DROP TABLE employees
+DROP TABLE departments CASCADE;
 INSERT INTO employees (emp_id, name, salary, department) VALUES
 (1, 'Alice', 48000, 'HR'),
 (2, 'Bob', 52000, 'Engineering'),
