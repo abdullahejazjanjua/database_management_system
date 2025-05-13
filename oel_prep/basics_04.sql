@@ -6,7 +6,7 @@ CREATE TABLE orders (
     status VARCHAR(20)
 );
 
-DROP TABLE orders;
+DROP TABLE orders CASCADE;
 
 INSERT INTO orders (order_id, customer_name, order_date, amount, status) VALUES
 (1, 'Alice', '2024-01-10', 250.00, 'Shipped'),
@@ -48,9 +48,6 @@ SELECT DISTINCT customer_name FROM orders AS O1 WHERE EXISTS (
 	O1.order_id != O2.order_id
 )
 
-
-
-
 SELECT * FROM orders WHERE amount > ANY(
 	SELECT amount FROM orders WHERE customer_name = 'Bob'
 );
@@ -86,7 +83,7 @@ HAVING SUM(amount) >= ALL(
 SELECT DISTINCT customer_name FROM orders AS O1
 WHERE amount > (
 	SELECT AVG(amount) FROM orders AS O2
-	WHERE O2.status = O2.status
+	WHERE O1.status = O2.status
 )
 
 
@@ -95,6 +92,3 @@ WHERE customer_name NOT IN (
 	SELECT customer_name FROM orders 
 	WHERE amount = (SELECT MAX(amount) FROM orders)
 );
-
-
-
